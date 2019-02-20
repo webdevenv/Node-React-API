@@ -1,0 +1,50 @@
+{
+  "name": "dev-environment",
+  "version": "1.0.0",
+  "description": "Base files for new Node project!",
+  "scripts": {
+    "start": "nps -s",
+    "build": "nps -s build"
+  },
+  "author": "Anthony White",
+  "license": "",
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "nodemon": "^1.18.9",
+    "nps": "^5.9.3",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^9.4.3",
+    "babel-core": "6.26.3",
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.0.4",
+    "babel-plugin-rewire": "^1.2.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "6.24.1",
+    "cross-env": "^5.2.0",
+    "cssnano": "^4.1.7",
+    "eslint": "^5.10.0",
+    "eslint-config-google": "0.11.0",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-config-problems": "2.0.0",
+    "eslint-plugin-fp": "2.3.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-prettier": "^3.0.0",
+    "eslint-plugin-react": "^7.11.1",
+    "expect": "^23.6.0",
+    "localtunnel": "^1.9.1",
+    "mocha": "^5.2.0",
+    "node-sass": "^4.10.0",
+    "npm-check": "^5.9.0",
+    "nps-utils": "^1.7.0",
+    "parcel-bundler": "^1.11.0",
+    "postcss": "^7.0.7",
+    "prettier": "^1.15.3",
+    "rewire": "^4.0.1",
+    "supertest": "^3.3.0"
+  }
+}

@@ -1,0 +1,4 @@
+{
+  "presets":["env","react"],
+  // For testing "plugins": ["babel-plugin-rewire"]
+}
