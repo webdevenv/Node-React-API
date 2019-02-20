@@ -7,9 +7,46 @@ module.exports = {
       hiddenFromHelp: true,
     },
     build: {
-      script: npsUtils.series.nps('parcel.dom.build', 'parcel.node.build'),
+      script: npsUtils.series.nps(
+        'parcel.dom.build',
+        'parcel.node.build',
+      ),
       description: 'Build both Node and DOM for production',
     },
+    /*
+    <==========================================>
+    <                  Both                >
+    <==========================================>
+    */
+    both: {
+      default: {
+        script: npsUtils.concurrent.nps(
+          'parcel.node',
+          'parcel.dom',
+          'nodemon.both',
+        ),
+        description: 'Development mode for Node.js and the DOM',
+      },
+      build: {
+        default: {
+          script: npsUtils.series.nps(
+            'parcel.dom.build',
+            'parcel.node.build',
+          ),
+          description: 'Build both Node and DOM for production',
+        },
+        run: {
+          script: npsUtils.series.nps(
+            'parcel.dom.build',
+            'parcel.node.build',
+            'nodemon.node',
+          ),
+          description:
+            'Build both Node and DOM for production and run server',
+        },
+      },
+    },
+
     /*
     <==========================================>
     <                  Node.js                 >
@@ -18,7 +55,10 @@ module.exports = {
     node: {
       // Development mode
       default: {
-        script: npsUtils.concurrent.nps('parcel.node', 'nodemon.node'),
+        script: npsUtils.concurrent.nps(
+          'parcel.node',
+          'nodemon.node',
+        ),
         description: 'Development mode for Node.js',
       },
       // Builds
@@ -28,7 +68,10 @@ module.exports = {
           description: 'Build Node.js project',
         },
         run: {
-          script: npsUtils.series.nps('parcel.node.build', 'nodemon.node'),
+          script: npsUtils.series.nps(
+            'parcel.node.build',
+            'nodemon.node',
+          ),
           description: 'Build Node.js project and run server',
         },
       },
@@ -46,7 +89,10 @@ module.exports = {
       },
       // Debug mode
       debug: {
-        script: npsUtils.concurrent.nps('parcel.node', 'nodemon.node.debug'),
+        script: npsUtils.concurrent.nps(
+          'parcel.node',
+          'nodemon.node.debug',
+        ),
         description: 'Debug Node.js project',
       },
     },
@@ -58,7 +104,10 @@ module.exports = {
     dom: {
       // Development mode
       default: {
-        script: npsUtils.concurrent.nps('parcel.dom', 'nodemon.dom'),
+        script: npsUtils.concurrent.nps(
+          'parcel.dom',
+          'nodemon.dom',
+        ),
         description: 'Development mode for DOM',
       },
       // Builds
@@ -68,7 +117,10 @@ module.exports = {
           description: 'Build DOM project',
         },
         run: {
-          script: npsUtils.series.nps('parcel.dom.build', 'nodemon.dom'),
+          script: npsUtils.series.nps(
+            'parcel.dom.build',
+            'nodemon.dom',
+          ),
           description: 'Build DOM project and run server',
         },
       },
@@ -92,11 +144,13 @@ module.exports = {
       node: {
         // Default as development
         default: {
-          script: 'cross-env NODE_ENV=development nodemon ./dist/app.js',
+          script:
+            'cross-env NODE_ENV=development nodemon ./dist/app.js',
           hiddenFromHelp: true,
         },
         production: {
-          script: 'cross-env NODE_ENV=production nodemon ./prod/app.js',
+          script:
+            'cross-env NODE_ENV=production nodemon ./prod/app.js',
           hiddenFromHelp: true,
         },
         debug: {
@@ -109,6 +163,13 @@ module.exports = {
         default: {
           script:
             'cross-env NODE_ENV=production FrontEnd=true nodemon ./prod/app.js',
+          hiddenFromHelp: true,
+        },
+      },
+      both: {
+        default: {
+          script:
+            'cross-env NODE_ENV=development FrontEnd=true nodemon ./dist/app.js',
           hiddenFromHelp: true,
         },
       },
