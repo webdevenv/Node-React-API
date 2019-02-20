@@ -7,10 +7,7 @@ module.exports = {
       hiddenFromHelp: true,
     },
     build: {
-      script: npsUtils.series.nps(
-        'parcel.dom.build',
-        'parcel.node.build',
-      ),
+      script: npsUtils.series.nps('parcel.dom.build', 'parcel.node.build'),
       description: 'Build both Node and DOM for production',
     },
     /*
@@ -21,10 +18,7 @@ module.exports = {
     node: {
       // Development mode
       default: {
-        script: npsUtils.concurrent.nps(
-          'parcel.node',
-          'nodemon.node',
-        ),
+        script: npsUtils.concurrent.nps('parcel.node', 'nodemon.node'),
         description: 'Development mode for Node.js',
       },
       // Builds
@@ -34,10 +28,7 @@ module.exports = {
           description: 'Build Node.js project',
         },
         run: {
-          script: npsUtils.series.nps(
-            'parcel.node.build',
-            'nodemon.node',
-          ),
+          script: npsUtils.series.nps('parcel.node.build', 'nodemon.node'),
           description: 'Build Node.js project and run server',
         },
       },
@@ -55,10 +46,7 @@ module.exports = {
       },
       // Debug mode
       debug: {
-        script: npsUtils.concurrent.nps(
-          'parcel.node',
-          'nodemon.node.debug',
-        ),
+        script: npsUtils.concurrent.nps('parcel.node', 'nodemon.node.debug'),
         description: 'Debug Node.js project',
       },
     },
@@ -70,10 +58,7 @@ module.exports = {
     dom: {
       // Development mode
       default: {
-        script: npsUtils.concurrent.nps(
-          'parcel.dom',
-          'nodemon.dom',
-        ),
+        script: npsUtils.concurrent.nps('parcel.dom', 'nodemon.dom'),
         description: 'Development mode for DOM',
       },
       // Builds
@@ -83,10 +68,7 @@ module.exports = {
           description: 'Build DOM project',
         },
         run: {
-          script: npsUtils.series.nps(
-            'parcel.dom.build',
-            'nodemon.dom',
-          ),
+          script: npsUtils.series.nps('parcel.dom.build', 'nodemon.dom'),
           description: 'Build DOM project and run server',
         },
       },
@@ -110,13 +92,11 @@ module.exports = {
       node: {
         // Default as development
         default: {
-          script:
-            'cross-env NODE_ENV=development nodemon ./dist/app.js',
+          script: 'cross-env NODE_ENV=development nodemon ./dist/app.js',
           hiddenFromHelp: true,
         },
         production: {
-          script:
-            'cross-env NODE_ENV=production nodemon ./prod/app.js',
+          script: 'cross-env NODE_ENV=production nodemon ./prod/app.js',
           hiddenFromHelp: true,
         },
         debug: {
@@ -147,19 +127,19 @@ module.exports = {
         },
         build: {
           script:
-            'cross-env NODE_ENV=production parcel build src/app.js --public-url ./ --out-dir prod --target node',
+            'cross-env NODE_ENV=production parcel build src/app.js --public-url ./ --out-dir prod --target node --no-cache --no-source-maps',
           hiddenFromHelp: true,
         },
       },
       dom: {
         default: {
           script:
-            'cross-env NODE_ENV=development parcel watch public/src/index.html --out-dir public/dist --target browser',
+            'cross-env NODE_ENV=development parcel watch public/src/index.html --public-url ./ --out-dir public/dist --target browser',
           hiddenFromHelp: true,
         },
         build: {
           script:
-            'cross-env NODE_ENV=production parcel build public/src/index.html --out-dir public/prod --target browser',
+            'cross-env NODE_ENV=production parcel build public/src/index.html --public-url ./ --out-dir public/prod --target browser  --no-cache --no-source-maps',
           hiddenFromHelp: true,
         },
       },
