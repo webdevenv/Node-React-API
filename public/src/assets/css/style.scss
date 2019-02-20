@@ -1,19 +1,23 @@
-// 0 - Plugins
-@import "0-Plugins/plugins";
+@charset 'UTF-8';
 
-// 1 - Base
-@import "1-Base/normalize";
-@import "1-Base/fonts";
-@import "1-Base/vars";
-@import "1-Base/global";
-@import "1-Base/mixins";
+// 1. Configuration and helpers
+@import 'abstracts/variables', 'abstracts/functions', 'abstracts/mixins';
 
-// 2 - Layouts
-@import "2-Layouts/header";
-@import "2-Layouts/footer";
+// 2. Vendors
+@import 'vendors/normalize';
 
-// 3 - Modules
-@import "3-Modules/modules";
+// 3. Base stuff
+@import 'base/base', 'base/utilities', 'base/fonts', 'base/typography',
+  'base/helpers', 'base/animations';
 
-// 4 - Templates
-@import "4-Templates/templates";
+// 4. Layout-related sections
+@import 'layout/header', 'layout/footer';
+
+// 5. Components
+// @import "components/button";
+
+// 6. Page-specific styles
+@import 'pages/home';
+
+// 7. Themes
+// @import "themes/default";
