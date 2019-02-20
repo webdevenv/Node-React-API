@@ -12,8 +12,10 @@ const pathFix = () => {
  */
 function publicPath() {
   if (process.env.FrontEnd) {
+    console.log('Dist folder');
     return path.resolve(__dirname, pathFix(), 'public/dist');
   }
+  console.log('Prod folder');
   return path.resolve(__dirname, pathFix(), 'public/prod');
 }
 export default { publicPath };
